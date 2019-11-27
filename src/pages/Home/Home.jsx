@@ -1,14 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  Container,
+} from '@catho/quantum';
 import StyledWrapper from './styles';
+import ProductsService from '../../services/Products';
+import ProductsList from '../../components/ProductsList';
 
-const Footer = ({ children }) => <StyledWrapper>{children}</StyledWrapper>;
-Footer.defaultProps = {
-  children: <div>home</div>,
-};
+const Home = () => {
 
-Footer.propTypes = {
-  children: PropTypes.node,
-};
+  const products = ProductsService.getAll();
 
-export default Footer;
+  
+  return (
+    <StyledWrapper>
+      <Container no-gutters withBreakpoints>
+        <ProductsList products={products} />
+      </Container>
+    </StyledWrapper>
+  );
+}
+
+
+export default Home;

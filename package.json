@@ -6,6 +6,7 @@
     "@catho/quantum": "^3.5.1",
     "babel-eslint": "^10.0.3",
     "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.7.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
@@ -17,6 +18,7 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "slug": "^1.1.0",
     "styled-components": "^4.4.1"
   },
   "scripts": {
@@ -26,7 +28,13 @@
     "eject": "react-scripts eject",
     "lint:js": "yarn lint ./*.js",
     "lint:all": "yarn lint:components && yarn lint:stories && yarn lint:js",
-    "lint": "eslint --ext js,jsx --quiet"
+    "lint": "eslint --ext js,jsx --quiet",
+    "commitizen": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "browserslist": {
     "production": [
