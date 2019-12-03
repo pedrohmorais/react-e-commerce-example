@@ -6,6 +6,10 @@ export default class Products {
   }
 
   static getById(id) {
-    return ProductsList.filter(p => p.id === id);
+    return ProductsList.find(p => p.id === id);
+  }
+
+  static getBySlug(slug) {
+    return ProductsList.find(p => p.slug === slug);
   }
 }

@@ -2,16 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../ProductCard';
 
+import {
+  StyledProductList,
+  StyledListItems,
+} from './styles';
+
 const renderProductCard = (product) => {
   const { name, slug, imgUrl, formatedPrice } = product;
   
   return (
-    <ProductCard
-      name={name}
-      slug={slug}
-      imgUrl={imgUrl}
-      formatedPrice={formatedPrice} 
-    />
+    <StyledListItems>
+      <ProductCard
+        name={name}
+        slug={slug}
+        imgUrl={imgUrl}
+        formatedPrice={formatedPrice} 
+      />
+    </StyledListItems>
   );
 }
 
@@ -20,9 +27,9 @@ const ProductsList = ({
 }) => {
 
   return (
-    <ul>
+    <StyledProductList>
       {products.map(p => renderProductCard(p))}
-    </ul>
+    </StyledProductList>
   );
 }
 

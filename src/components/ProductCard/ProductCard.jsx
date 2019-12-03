@@ -8,6 +8,9 @@ import {
 import {
   PriceBlock,
   ImgContainer,
+  StyledFooter,
+  CTAButton,
+  CTAButtonContainer,
 } from './styles';
 
 const ProductCard = ({ name, slug, imgUrl, formatedPrice }) => (
@@ -21,24 +24,18 @@ const ProductCard = ({ name, slug, imgUrl, formatedPrice }) => (
       {formatedPrice}
     </PriceBlock>
     <ImgContainer src={imgUrl} alt={slug} />
-    <Card.Footer
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
-    >
-      <div>
-        <Button size="small" skin="secondary">
+    <StyledFooter>
+      <CTAButtonContainer>
+        <Button as="a" href={`/produto/${slug}`} size="small" skin="secondary">
           Ver detalhes
         </Button>
-      </div>
+      </CTAButtonContainer>
       <div>
-        <Button size="small" skin="primary" icon="shopping_cart">
+        <CTAButton size="small" skin="primary" icon="shopping_cart">
           Adicionar ao carrinho
-        </Button>
+        </CTAButton>
       </div>
-    </Card.Footer>
+    </StyledFooter>
   </Card>
 );
 

@@ -15,15 +15,8 @@ const ImgContainer = styled(Card.Media)`
   background-color: ${Colors.neutral[0]};
 `;
 
-const StyledFooter = styled(Card.Footer)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+const DescriptionBlock = styled(Card.Content)`
 
-const CTAButton = styled(Button)`
-  min-height: 36px;
-  margin-right: 20px;
 `;
 
 const CTAButtonContainer = styled.div`
@@ -35,12 +28,11 @@ const CTAButtonContainer = styled.div`
     min-height: 36px;
     margin-right: 20px;
   }
-`; 
+`;
 
 export {
   PriceBlock,
   ImgContainer,
-  StyledFooter,
-  CTAButton,
+  DescriptionBlock,
   CTAButtonContainer,
 }

@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { GlobalStyle } from '@catho/quantum';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom'
-import { Home, ErrorPage } from './pages';
+import Home from './pages/Home';
+import ErrorPage from './pages/ErrorPage';
+import Product from './pages/Product';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -11,6 +13,7 @@ ReactDOM.render(
     <GlobalStyle />
     <BrowserRouter>
       <Switch>
+        <Route path="/produto/:productSlug" exact component={Product} />
         <Route path="/" exact component={Home} />
         <Route path='*' component={ErrorPage} />
       </Switch>
