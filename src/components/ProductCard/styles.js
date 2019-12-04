@@ -31,11 +31,11 @@ const CTAButtonContainer = styled.div`
     text-decoration: none;
     box-sizing: border-box;
   }
-  ${Button} {
+  button {
     min-height: 36px;
     margin-right: 20px;
   }
-`; 
+`;
 
 export {
   PriceBlock,

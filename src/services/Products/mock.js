@@ -1,7 +1,7 @@
 import slug from 'slug';
-import { priceFormat } from '../../shared';
+import { priceFormat } from 'shared';
 
-const mountImgUrl = (recipientId, imgName, format = 'jpg') => `/assets/products/r-${recipientId}/${imgName}.${format}`;
+const mountImgUrl = (recipientId, imgName, format = 'jpg') => `/static/products/r-${recipientId}/${imgName}.${format}`;
 
 const productsMock = [
   {
@@ -45,10 +45,10 @@ const mountedMock = (product) => {
     recipient_id: recipientId,
     price,
   } = product;
-  newProduct.slug = slug(name, {lower: true});
+  newProduct.slug = slug(name, { lower: true });
   newProduct.imgUrl = mountImgUrl(recipientId, newProduct.slug);
   newProduct.formatedPrice = priceFormat(price);
   return newProduct;
-}
+};
 
 export default productsMock.map(p => mountedMock(p));

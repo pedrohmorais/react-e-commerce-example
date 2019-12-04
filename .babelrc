@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    ["babel-plugin-root-import"],
+    ["styled-components", { "ssr": true }],
+    ["module-resolver", {
+      "root": ["./src"],
+      // "alias": {
+      //   "test": "./test",
+      //   "underscore": "lodash"
+      // }
+    }]
+  ],
+  "presets": ["next/babel"],
+}

@@ -17,7 +17,7 @@ const ProductCard = ({ name, slug, imgUrl, formatedPrice }) => (
   <Card>
     <Card.Header>
       <Card.HeaderText>
-        <Card.Title small>{name}</Card.Title>        
+        <Card.Title small>{name}</Card.Title>
       </Card.HeaderText>
     </Card.Header>
     <PriceBlock>
