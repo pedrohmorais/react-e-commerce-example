@@ -159,7 +159,7 @@ class CamposPage extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  filterProps: state.fieldFilterReducer,
+  filterProps: state.shopCartReducer,
 });
 
 // export const mapDispatchToProps = dispatch => ({

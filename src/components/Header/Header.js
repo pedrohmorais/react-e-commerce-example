@@ -52,8 +52,8 @@ class Header extends Component {
           url: '/',
         },
         {
-          label: 'Campos',
-          url: '/campos',
+          label: 'Carrinho',
+          url: '/carrinho',
         },
       ];
 

@@ -13,11 +13,13 @@ const renderProductCard = (product) => {
     slug,
     imgUrl,
     formatedPrice,
+    id,
   } = product;
 
   return (
     <StyledListItems key={slug}>
       <ProductCard
+        id={id}
         name={name}
         slug={slug}
         imgUrl={imgUrl}

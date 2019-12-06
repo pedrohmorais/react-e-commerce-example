@@ -20,6 +20,10 @@ app.prepare().then(() => {
     return app.render(req, res, '/reduxtest');
   });
 
+  server.get('/carrinho', (req, res) => {
+    return app.render(req, res, '/Cart');
+  });
+
   server.get('/produto/:productSlug', (req, res) => {
     return app.render(req, res, '/Product', { productSlug: req.params.productSlug });
   });

@@ -1,25 +1,28 @@
+import ShopCartService from '../../services/ShopCart';
+
 const exampleInitialState = {
   items: [],
 };
 
 export const actionTypes = {
-  UPDATE: 'UPDATE_FIELD_FILTERS',
-  RESET: 'RESET_FIELD_FILTERS',
+  ADD_ITEM: 'ADD_ITEM_SHOP_CART',
+  RESET: 'RESET_SHOP_CART',
 };
 
 // REDUCERS
 export const reducer = (state = exampleInitialState, action) => {
   switch (action.type) {
-    case actionTypes.UPDATE:
+    case actionTypes.ADD_ITEM:
+      ShopCartService.setShopCart({ items: state.items.concat(action.item) });
       return {
         ...state,
-        items: action.items,
-      }
+        items: state.items.concat(action.item),
+      };
     case actionTypes.RESET:
       return {
         items: exampleInitialState.items,
-      }
+      };
     default:
       return state;
   }
-}
+};
