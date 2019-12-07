@@ -9,7 +9,6 @@ class Cookies {
 
   static setCookie(cookieName, value) {
     jsCookie.set(cookieName, value);
-    console.log('setted');
   }
 
   setSSRCookie(cookieName, value) {

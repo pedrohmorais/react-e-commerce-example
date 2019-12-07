@@ -14,6 +14,7 @@ const renderProductCard = (product) => {
     imgUrl,
     formatedPrice,
     id,
+    price,
   } = product;
 
   return (
@@ -24,6 +25,7 @@ const renderProductCard = (product) => {
         slug={slug}
         imgUrl={imgUrl}
         formatedPrice={formatedPrice}
+        price={price}
       />
     </StyledListItems>
   );

@@ -11,17 +11,22 @@ class ShopCart {
   }
 
   static setShopCart(items) {
+    console.log('addd', items);
     Cookies.setCookie(cookieName, JSON.stringify(items));
   }
 
   setShopCartSSR(items) {
     this.cookiesClass.setSSRCookie(cookieName, JSON.stringify(items));
-
-    console.log('setShopCart', JSON.parse(this.cookiesClass.getSSRCookie(cookieName)));
   }
 
   static getShopCart() {
-    return JSON.parse(Cookies.getCookie(cookieName));
+    const cartItems = JSON.parse(Cookies.getCookie(cookieName));
+    if (cartItems && cartItems.items) {
+      return cartItems;
+    }
+    const newItems = { items: [] };
+    this.setShopCart(newItems);
+    return newItems;
   }
 
   getShopCartSSR() {

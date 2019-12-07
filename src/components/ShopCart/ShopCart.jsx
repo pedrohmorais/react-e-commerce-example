@@ -2,56 +2,85 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  func,
-} from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   Card,
+  Icon,
 } from '@catho/quantum';
-import { resetFilters, addToChart } from './actions';
-import constants from '../../constants';
+import { getCartFromCookie, removeFromCart } from './actions';
 import {
+  CancelWrapper,
   ShopCartWrapper,
   ShopCartItems,
   ShopCartItem,
+  ThumbImage,
 } from './styles';
 
 const defaultProps = {
 };
 
 const propTypes = {
-  addToChartAction: func.isRequired,
+  removeCartItem: PropTypes.func.isRequired,
+  getCart: PropTypes.func.isRequired,
+  cartItemsProps: PropTypes.object.isRequired,
 };
-
-const fieldTypes = constants.FIELD_TYPES;
 
 class ShopCart extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      items: [],
-    };
-
-    this.props = props;
-    // this.updateMountedFilter = this.updateMountedFilter.bind(this);
-    // this.toggleFilter = this.toggleFilter.bind(this);
-
-    // this.selectCidadeRef = React.createRef();
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.resetFilters();
-  // }
+  componentDidMount() {
+    const {
+      getCart,
+    } = this.props;
+    getCart();
+  }
+
+
+  handleClick(id) {
+    const { removeCartItem } = this.props;
+    removeCartItem(id);
+  }
+
+  renderCartItem(item) {
+    const {
+      id,
+      name,
+      formatedPrice,
+      imgUrl,
+      slug,
+    } = item;
+
+    return (
+      <ShopCartItem key={id}>
+        <Card>
+          <Card.Header>
+            <ThumbImage>
+              <img src={imgUrl} alt={slug} />
+            </ThumbImage>
+            <Card.HeaderText>
+              <Card.Title small>{name}</Card.Title>
+              <Card.Description>{formatedPrice}</Card.Description>
+            </Card.HeaderText>
+            <CancelWrapper title="Remover item do carrinho" type="button" onClick={() => this.handleClick(id)}>
+              <Icon name="cancel" />
+            </CancelWrapper>
+          </Card.Header>
+        </Card>
+      </ShopCartItem>
+    );
+  }
 
   render() {
-    const { addToChartAction } = this.props;
-    const addItem = () => addToChartAction({
-      nome: 'm92aa',
-    });
+    const { cartItemsProps } = this.props;
+
     return (
       <ShopCartWrapper>
-        items        
+        <ShopCartItems>
+          {cartItemsProps.items.map(cartItem => this.renderCartItem(cartItem))}
+        </ShopCartItems>
       </ShopCartWrapper>
     );
   }
@@ -60,12 +89,14 @@ class ShopCart extends Component {
 ShopCart.defaultProps = defaultProps;
 ShopCart.propTypes = propTypes;
 
+export const mapStateToProps = state => ({ cartItemsProps: state.shopCartReducer });
+
 const mapDispatchToProps = dispatch => ({
-  resetFilters: () => dispatch(resetFilters()),
-  addToChartAction: filters => dispatch(addToChart(filters)),
+  removeCartItem: itemId => dispatch(removeFromCart(itemId)),
+  getCart: item => dispatch(getCartFromCookie(item)),
 });
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(ShopCart);
 

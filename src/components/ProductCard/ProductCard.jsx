@@ -6,7 +6,7 @@ import {
   Button,
 } from '@catho/quantum';
 
-import { addToChart } from '../ShopCart/actions';
+import { addToCart } from '../ShopCart/actions';
 
 import {
   PriceBlock,
@@ -25,19 +25,21 @@ class ProductCard extends React.Component {
       slug,
       imgUrl,
       formatedPrice,
-      addToChartAction,
+      price,
+      addToCartAction,
     } = this.props;
 
-    const handleToChartClick = () => {
-      addToChartAction({
+    const handleToCartClick = () => {
+      addToCartAction({
         id,
         name,
         slug,
         imgUrl,
+        price,
         formatedPrice,
       });
       // eslint-disable-next-line no-alert
-      alert('Produto adicionado com sucesso!');
+      alert('Produto adicionado com sucesso! \n Vá para o carrinho para finalizar a compra!');
     };
 
     return (
@@ -58,7 +60,7 @@ class ProductCard extends React.Component {
             </Button>
           </CTAButtonContainer>
           <div>
-            <CTAButton size="small" skin="primary" icon="shopping_cart" onClick={() => handleToChartClick()}>
+            <CTAButton size="small" skin="primary" icon="shopping_cart" onClick={() => handleToCartClick()}>
               Adicionar ao carrinho
             </CTAButton>
           </div>
@@ -73,12 +75,13 @@ ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   imgUrl: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   formatedPrice: PropTypes.string.isRequired,
-  addToChartAction: PropTypes.func.isRequired,
+  addToCartAction: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  addToChartAction: filters => dispatch(addToChart(filters)),
+  addToCartAction: filters => dispatch(addToCart(filters)),
 });
 export default connect(
   null,

@@ -1,5 +1,7 @@
 import { actionTypes } from './reducers';
 // ACTIONS
-export const resetFilters = () => ({ type: actionTypes.RESET, light: false, ts: Date.now() });
+export const removeFromCart = itemId => ({ type: actionTypes.REMOVE, itemId });
 
-export const addToChart = item => ({ type: actionTypes.ADD_ITEM, item });
+export const addToCart = item => ({ type: actionTypes.ADD_ITEM, item });
+
+export const getCartFromCookie = () => ({ type: actionTypes.GET_FROM_COOKIE });

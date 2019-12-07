@@ -2,6 +2,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react';
 import Container from 'components/Container';
+import { Link } from 'react-router-dom';
 import {
   string,
 } from 'prop-types';
@@ -62,7 +63,7 @@ class Header extends Component {
       urls.forEach((url, index) => (
         componentsUrl.push(
           <li key={`headerLabel${index}`} className={currentUrl === url.url ? 'selected' : null}>
-            <a href={url.url}>{url.label}</a>
+            <Link to={url.url}>{url.label}</Link>
           </li>,
         )
       ));
