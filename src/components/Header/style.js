@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
   ${fontFamily}
 
   position: fixed;
-  padding: 0px 15px;
+  padding: 8px 15px;
   width: calc(100vw - 30px);
   height: 75px;
   left: 0;
@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   color: ${colors.grey};
 
   @media ${device.laptop} {
-    padding: 0;
+    padding: 8px 0;
     width: 100%;
   }
 `;

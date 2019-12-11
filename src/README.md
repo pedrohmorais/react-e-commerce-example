@@ -1,8 +1,12 @@
-## Available Scripts
+## React e-commerce market place.
 
-In the project directory, you can run:
+To run this project:
 
-### `yarn start`
+### `npm i`
+### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:21050](http://localhost:21050) to view it in the browser.
+### To deploy:
+Clone this project in a node server.
+Create a `.env` file just like `.env.example` file.
+Install npm packages with `npm i`, is better to use yarn instead.
+Run `npm start` or `node server.js`.

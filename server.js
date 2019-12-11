@@ -12,14 +12,6 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
-  server.get('/auth', (req, res) => {
-    return app.render(req, res, '/auth');
-  });
-
-  server.get('/reduxtest', (req, res) => {
-    return app.render(req, res, '/reduxtest');
-  });
-
   server.get('/carrinho', (req, res) => {
     return app.render(req, res, '/Cart');
   });

@@ -15,7 +15,7 @@ const styles = `
     line-height: 19px;
     font-size: 14px;
     padding: 0;
-    margin: 65px 0 0 0;
+    margin: 75px 0 0 0;
     letter-spacing: 1px;
   }
   a {

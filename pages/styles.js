@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { Card } from '@catho/quantum';
 
-const StyledWrapper = styled.div`
+const StyledCardContent = styled(Card.Content)`
+    padding: 16px 0;
 `;
 
-export default StyledWrapper;
+export default StyledCardContent;

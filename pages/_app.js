@@ -19,7 +19,7 @@ class MyApp extends App {
     } = this.props;
 
     return (
-      <Container>
+      <Container no-gutters withBreakpoints>
         <Provider store={reduxStore}>
           <GlobalStyle />
           <Helmet>
@@ -29,7 +29,7 @@ class MyApp extends App {
               `}
             </style>
           </Helmet>
-          <MainContent>
+          <MainContent style={{ visibility: 'hidden' }}>
             <Header currentUrl={router && router.pathname ? router.pathname : null} />
             <Component {...pageProps} />
           </MainContent>
