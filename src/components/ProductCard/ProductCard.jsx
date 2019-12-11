@@ -17,7 +17,7 @@ import {
 } from './styles';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class ProductCard extends React.Component {
+export class ProductCard extends React.Component {
   render() {
     const {
       id,
@@ -83,6 +83,7 @@ ProductCard.propTypes = {
 const mapDispatchToProps = dispatch => ({
   addToCartAction: filters => dispatch(addToCart(filters)),
 });
+
 export default connect(
   null,
   mapDispatchToProps,

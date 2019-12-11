@@ -1,16 +1,16 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
-import ProductCard from './ProductCard';
 import ProductsService from 'services/Products';
+import { ProductCard } from './ProductCard';
 
 describe('<ProductCard />', () => {
   it('should match snapshot', () => {
     const product = ProductsService.getById(1);
-    const component = <ProductCard {...product} />;
+    product.addToCartAction = jest.fn();
 
-    const wrapper = shallow(component);
-
-    expect(wrapper).toMatchSnapshot();
+    expect(
+      renderer.create(<ProductCard {...product} />).toJSON(),
+    ).toMatchSnapshot();
   });
 });

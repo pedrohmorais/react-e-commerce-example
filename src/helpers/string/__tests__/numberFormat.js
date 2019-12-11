@@ -6,8 +6,8 @@ describe('numberFormat():', () => {
       [null, '0'],
       ['50', '50'],
       ['100', '100'],
-      ['1500', '1.500'],
-      ['10250', '10.250'],
+      ['1500', '1,500'],
+      ['10250', '10,250'],
     ];
 
     testTuples.forEach(t => expect(numberFormat(t[0], 'pt-BR')).toBe(t[1]));
