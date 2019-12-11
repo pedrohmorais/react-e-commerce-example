@@ -11,7 +11,6 @@ class ShopCart {
   }
 
   static setShopCart(items) {
-    console.log('addd', items);
     Cookies.setCookie(cookieName, JSON.stringify(items));
   }
 

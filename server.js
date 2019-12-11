@@ -16,6 +16,10 @@ app.prepare().then(() => {
     return app.render(req, res, '/Cart');
   });
 
+  server.get('/checkout', (req, res) => {
+    return app.render(req, res, '/Checkout');
+  });
+
   server.get('/produto/:productSlug', (req, res) => {
     return app.render(req, res, '/Product', { productSlug: req.params.productSlug });
   });
