@@ -42,7 +42,8 @@
     "build": "next build",
     "start": "node server.js",
     "test": "jest",
-    "cm:master": "git add -A && git commit -m 'comited' && git push origin master"
+    "cm:master": "git add -A && git commit -m 'comited' && git push origin master",
+    "clear:tests": "rm -rf  ./src/**/**/__tests__/* && rm -rf ./src/**/**/*.test.js*"
   },
   "eslintConfig": {
     "extends": "react-app"
