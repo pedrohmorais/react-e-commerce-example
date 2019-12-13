@@ -12,6 +12,12 @@ const ShopCartItems = styled.ul`
 `;
 
 const ShopCartItem = styled.li`
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   ${Card.Header} {
     padding: 16px;
   }

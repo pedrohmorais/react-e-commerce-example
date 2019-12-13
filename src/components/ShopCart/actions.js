@@ -4,4 +4,6 @@ export const removeFromCart = itemId => ({ type: actionTypes.REMOVE, itemId });
 
 export const addToCart = item => ({ type: actionTypes.ADD_ITEM, item });
 
+export const clearCart = () => ({ type: actionTypes.CLEAR });
+
 export const getCartFromCookie = () => ({ type: actionTypes.GET_FROM_COOKIE });

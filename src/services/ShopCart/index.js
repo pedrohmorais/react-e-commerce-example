@@ -14,6 +14,10 @@ class ShopCart {
     Cookies.setCookie(cookieName, JSON.stringify(items));
   }
 
+  static clearShopCart() {
+    Cookies.setCookie(cookieName, JSON.stringify([]));
+  }
+
   setShopCartSSR(items) {
     this.cookiesClass.setSSRCookie(cookieName, JSON.stringify(items));
   }
@@ -29,7 +33,7 @@ class ShopCart {
   }
 
   getShopCartSSR() {
-    return this.cookiesClass.getSSRCookie(cookieName);
+    return JSON.parse(this.cookiesClass.getSSRCookie(cookieName));
   }
 }
 

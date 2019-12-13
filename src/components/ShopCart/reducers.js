@@ -8,6 +8,7 @@ export const actionTypes = {
   GET_FROM_COOKIE: 'GET_FROM_COOKIE_SHOP_CART',
   ADD_ITEM: 'ADD_ITEM_SHOP_CART',
   REMOVE: 'REMOVE_ITEM_SHOP_CART',
+  CLEAR: 'CLEAR_SHOP_CART',
 };
 
 const removeCartItem = (items, itemIdToRemove) => {
@@ -38,6 +39,10 @@ export const reducer = (state = exampleInitialState, action) => {
     case actionTypes.REMOVE:
       return {
         items: removeCartItem(state.items, action.itemId),
+      };
+    case actionTypes.CLEAR:
+      return {
+        items: [],
       };
     case actionTypes.GET_FROM_COOKIE:
       return {

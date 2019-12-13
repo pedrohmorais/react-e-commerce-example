@@ -3,10 +3,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ShopCartService from 'services/ShopCart';
 import {
   Card,
   Icon,
 } from '@catho/quantum';
+import skeleton from './skeleton';
 import { getCartFromCookie, removeFromCart } from './actions';
 import {
   CancelWrapper,
@@ -17,12 +19,25 @@ import {
 } from './styles';
 
 const defaultProps = {
+  isResume: false,
+  cartItemsProps: [],
 };
 
 const propTypes = {
+  isResume: PropTypes.bool,
   removeCartItem: PropTypes.func.isRequired,
   getCart: PropTypes.func.isRequired,
-  cartItemsProps: PropTypes.object.isRequired,
+  cartItemsProps: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        formatedPrice: PropTypes.string,
+        imgUrl: PropTypes.string,
+        slug: PropTypes.string,
+      }),
+    ),
+  }),
 };
 
 class ShopCart extends Component {
@@ -34,8 +49,12 @@ class ShopCart extends Component {
   componentDidMount() {
     const {
       getCart,
+      isResume,
     } = this.props;
     getCart();
+    if (isResume) {
+      ShopCartService.clearShopCart();
+    }
   }
 
 
@@ -52,6 +71,7 @@ class ShopCart extends Component {
       imgUrl,
       slug,
     } = item;
+    const { isResume } = this.props;
 
     return (
       <ShopCartItem key={id}>
@@ -64,9 +84,11 @@ class ShopCart extends Component {
               <Card.Title small>{name}</Card.Title>
               <Card.Description>{formatedPrice}</Card.Description>
             </Card.HeaderText>
-            <CancelWrapper title="Remover item do carrinho" type="button" onClick={() => this.handleClick(id)}>
-              <Icon name="cancel" />
-            </CancelWrapper>
+            {!isResume && (
+              <CancelWrapper title="Remover item do carrinho" type="button" onClick={() => this.handleClick(id)}>
+                <Icon name="cancel" />
+              </CancelWrapper>
+            )}
           </Card.Header>
         </Card>
       </ShopCartItem>
@@ -88,6 +110,7 @@ class ShopCart extends Component {
 
 ShopCart.defaultProps = defaultProps;
 ShopCart.propTypes = propTypes;
+ShopCart.Skeleton = skeleton;
 
 export const mapStateToProps = state => ({ cartItemsProps: state.shopCartReducer });
 
@@ -99,22 +122,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(ShopCart);
-
-
-/*
-export const mapStateToProps = state => ({
-  ...state.blogPostReducer,
-});
-
-export const mapDispatchToProps = dispatch => ({
-  loadBlogPost: () => dispatch(fetchBlogPost()),
-});
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withJob({
-    work: props => props.loadBlogPost(),
-    LoadingComponent: () => <BlogAdSkeleton />,
-  }),
-)(BlogAd);
-*/
